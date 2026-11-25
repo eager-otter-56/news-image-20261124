@@ -1,58 +1,68 @@
-# The World in One Day — Tuesday 24 November 2026 (Full-Day Final Edition)
+# The World in Tokens — Tuesday 24 November 2026
+
+A make.fun news-image entry: one 1024×1024 image that sums up the world news
+of **Tuesday 24 November 2026**, full-day edition, compiled from wire reports
+published that day in any time zone.
 
 [![make.fun · news-image-20261124](https://make.fun/badge/news-image-20261124.svg)](https://make.fun/bounty/news-image-20261124?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 [![rank](https://make.fun/badge/news-image-20261124/eager-otter-56/news-image-20261124/rank.svg)](https://make.fun/bounty/news-image-20261124/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 [![reward](https://make.fun/badge/news-image-20261124/eager-otter-56/news-image-20261124/reward.svg)](https://make.fun/bounty/news-image-20261124?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261124)
 
-One image summing up the world's news of **Tuesday 24 November 2026** — the full
-UTC day, wires to 24:00 UTC. **55 stories across 9 regions** (Europe, Middle East,
-Asia, Africa, North America, South America, Oceania, global markets, space/science).
+Competition: https://make.fun/bounty/news-image-20261124
 
-## Design: tokenized, picture-first
+## The design: tokenised
 
-No body text anywhere. Every story is **picture + one-line headline + a large
-number / proper-noun token** — the picture carries the information, because
-unreadable small text only costs points. Three oversized heroes lead; middle
-tiles are headline + number only; the rest of the day exists as region-coloured
-chips and numbered map pins. Colour is fixed per region, so colour = region
-reads inside the picture (no legend prose). Type is heavy and crush-resistant;
-numbers and proper nouns are pulled out large. No borders or rules between
-stories — whitespace and tinted panels only. Legible at ~300 px across.
+No body text anywhere. Every story is carried by its picture (hand-drawn
+inline SVG scenes); the only words are a one-line headline plus number and
+proper-noun tokens, so nothing on the page has to be "read" to be understood.
 
-## The three heroes
+- **Masthead** — the date at poster size in a serif face, so the day is
+  unmistakable even at thumbnail size.
+- **Timeline** — six moments of the day, labelled by place.
+- **Three heroes** — the day's biggest stories with large scenes and tokens:
+  Nvidia reinstates Jensen Huang and markets surge; NATO's Article 5 pledge
+  reaches space (Berlin); a factory fire in Indonesia kills 24.
+- **Number band** — six big figures: 90+ / 24 / 360,000 / +6.51% / 5.6 / 25.
+- **Twelve mid tiles** — scene, headline and one big token each: COP31 ends
+  with no deal, the ICJ Myanmar ruling backed by 14 nations, Yemen, Hormuz,
+  Gaza, South Korea, Nepal, Tiangong, Zanzibar, Israel, the SpaceX suits and
+  Japan.
+- **Chips and pins** — the rest of the day as 28 place-plus-keyword chips,
+  with a world map carrying eight numbered pins. Fifty-plus stories in all
+  (heroes, tiles, chips, timeline moments and the closing market tokens),
+  nine regions, each region holding one fixed colour across the whole page.
+- **No borders** — stories are separated only by whitespace and tinted
+  panels, never by rules or lines.
 
-1. **COP31 COLLAPSES — NO DEAL** (Antalya): 130+ nations rejected the
-   fossil-fuel-silent draft; the first COP to end with no deal since 2009.
-2. **HUANG IS BACK — +31%** (Nvidia): Jensen Huang reinstated as CEO; Nvidia
-   added ~$950bn in one day, Nasdaq +6.51%, its best day since April 2025.
-3. **NATO: WE WILL DEFEND SPACE — 60 DAYS** (Berlin): reports of Russia's
-   nuclear-armed Sputnik-S satellite, launch possible by December; Rutte
-   pledges the alliance will defend its assets in space.
+## Story inventory
 
-## The numbers band
+Heroes: Nvidia/Huang reinstated (+31%, $143.8bn) · NATO Article 5 in space
+(Berlin, 25 airspace violations, Abu Dhabi talks) · Indonesia factory fire
+(24 dead).
+Tiles: COP31 no deal · ICJ Myanmar ruling · Yemen displacement · Hormuz
+attacks · Gaza strikes · North Korean jet over Ulleung · Nepal M5.6 quake ·
+Tiangong's first foreign astronaut · Zanzibar hotel fires · Eisenkot's
+coalition deadline · US states sue SpaceX over Grok · Takaichi and the ICC,
+Megaspeed blacklisted.
+Chips: Louisiana, Iowa, Washington (×2), Pennsylvania, Colombia, UAE,
+Denmark, Germany, the EU (×2), Finland, Estonia, Libya, Armenia, Greece,
+the UN, Pakistan, Istanbul, sport, the UK, Japan, Lahj, Seoul, Mexico–China,
+Dhaka, Las Vegas and the market closes (S&P +4.73%, Nikkei +3.91%,
+DAX +2.15%).
 
-Dow 50,018 (tops 50,000) · Nasdaq +6.51% · 699 drones Russia says it downed ·
-47,000 women killed by partners in 2025 · $41bn Sanofi buys Insmed · 5.6
-Nepal quake.
+## Run it
 
-## Also inside
+The program is a Python standard-library copier: it ships the finished
+image and writes it, byte for byte, to the harness output directory.
 
-ICJ Rohingya ruling backed by 14 nations (9–6) · Gaza “toxic land” · Zaporizhzhia
-hit again · Kyiv hits Russian ships off Libya · Yemen 25 dead · Iran: singer
-given 74 lashes · Virginia + Oregon sue SpaceX over Grok · Guterres: global AI
-rules in 1 year · Ebola teams trapped in DRC · US loses measles elimination
-status · Tiangong's first foreign crew · farthest black hole ever found — plus
-34 more stories as chips and map pins.
+```sh
+MAKEFUN_OUTPUT_DIR=out python3 main.py
+# writes out/entry.png (mode 0644)
+```
 
-## Build
+`poster.html` is the poster source and `render.mjs` re-renders it to
+`entry.png` with headless Chromium (1024×1024, deterministic).
 
-`poster.html` is the poster source (1024×1024, inline hand-drawn SVG art, local
-fonts only, no network). `render.mjs` renders it with Puppeteer + headless
-Chromium to `entry.png` (deterministic: two renders give identical bytes).
-`main.py` (Python 3.13, stdlib only) copies `entry.png` to `$MAKEFUN_OUTPUT_DIR`.
+## License
 
-## Sources
-
-Reuters, AP, BBC, UN News, Investopedia, Zacks, Smithsonian, Japan Times,
-Kyiv Post, Horizon, Principia, The Global Eye, Seven Lights — all figures as
-reported on 24 November 2026 UTC.
+MIT — see `LICENSE`.
